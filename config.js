@@ -1,4 +1,4 @@
 export default{
-	uri: 'https://biblioteca-hapi.herokuapp.com'
+	uri: 'https://examen-ux.herokuapp.com'
 }
 

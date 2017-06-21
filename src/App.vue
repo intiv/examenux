@@ -1,45 +1,24 @@
 <template>
   <div id="app">
   	<div class="container" v-if="isLogin()===false">
-		<div class="row">
-			<div class="col l12 m12 s12">
-				<nav>
-					<div class="nav-wrapper">
-						<a class="brand-logo center">Biblioteca</a>
-						<ul id="nav-mobile" class="right">
-							<li><button v-on:click="Logout()" class="btn">Logout</button></li>
-						</ul>
-					</div>
-				</nav>
-			</div>
-		</div>
 		<div class="row" id="body">
 			<div class="col l2 m2 s2">
 				<aside id="sidebar">
-				
-					<div class="linkContainer" v-bind:class="{current : (isCurrentRoute()===1)}">
+					<div class="linkContainer" >
 						<a>
-						<router-link to="/books">
-							<p>Libros</p>
+						<router-link to="/hechizos">
+							<p>Hechizos</p>
 						</router-link>
 						</a>
 					</div>
 				
-					<div class="linkContainer"  v-bind:class="{current : (isCurrentRoute()===3)}">
+					<div class="linkContainer">
 						<a>
 							<router-link to="/books/search">
-								<p>Buscar libros</p>
+								<p>Amistades</p>
 							</router-link>
 						</a>
 					</div>
-
-					<div class="linkContainer" v-bind:class="{current : (isCurrentRoute()===4)}">
-						<a>
-							<router-link to="/books/borrowed">
-								<p>Libros Prestados</p>
-							</router-link>
-						</a>
-					</div>	
 				</aside>
 			</div>
 			<div class="col l10 m10 s10" id="contentRender">
@@ -64,14 +43,7 @@
 	  	}
 	  },
 	  methods : {
-	  	isCurrentRoute(){
-	  		switch(this.$route.path){
-	  			case '/books': return 1; break;
-	  			case '/books/create': return 2; break;
-	  			case '/books/search': return 3; break;
-	  			case '/books/borrowed': return 4; break;
-	  		}
-	  	},
+	  	
 	  	isLogin(){
 	  		if(this.$route.path==='/login'){
 	  			return true;
@@ -90,25 +62,61 @@
 
 
 <style>
+	@keyframes fadein {
+	  0% { opacity: 0; }
+	  80%   { opacity: 0; }
+	  90% {opacity: 0.5;}
+	  100% {opacity: 1;}
+	}
+
+	@keyframes slidein {
+	  0% { opacity: 0; }
+	  80%   { opacity: 0; }
+	  90% {opacity: 0.5;}
+	  100% {opacity: 1;}
+	}
+
+	/* Firefox < 16 */
+	@-moz-keyframes fadein {
+	  from { opacity: 0; }
+	  to   { opacity: 1; }
+	}
+
+	/* Safari, Chrome and Opera > 12.1 */
+	@-webkit-keyframes fadein {
+	  from { opacity: 0; }
+	  to   { opacity: 1; }
+	}
+
+	/* Internet Explorer */
+	@-ms-keyframes fadein {
+	  from { opacity: 0; }
+	  to   { opacity: 1; }
+	}
+
 	#sidebar{
 		text-align: center;
-		height: 80vh;
+		height: 93vh;
 		background-color: #327A41;
 		font-size: 2vh; 
 		filter: saturate(100%);
+		margin-left: 25%;
 		padding-top: 30%;
 		border: 2px solid #184223;
-		width: 12vw;
+		width: 15vw;
+		animation: fadein 2s;
 	}
 
 	#app{
-		margin-top: 10px;
+		margin-top: 5px;
 		height:100vh;
 		width: 100vw;
 	}
 
 	.container{
-		width: 80vw;
+		width: 100vw;
+		margin: 5% 10%;
+		display: inline;
 	}
 
 	.current{
@@ -116,8 +124,9 @@
 	}
 
 	#contentRender{
-		height: 80vh;
-		width: 67.2vw;
+		height: 93vh;
+		width: 65vw;
+		margin-left: 10%;
 		border: 2px #171717 solid;
 		background-color: #f2f2f2;
 		padding: 0;
@@ -132,7 +141,9 @@
 	}
 	body{
 		
-		background-image: url('./books.jpg');
+		background-image: url('./wood.jpg');
+		background-repeat: no-repeat;
+		background-size: cover;
 		font-family: "Roboto";
 	}
 
