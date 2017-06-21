@@ -120,7 +120,6 @@
 				var nUser = this.registro;
 
 				this.$http.post(`${baseUrl.uri}/register`, nUser).then((response)=>{
-					
 					localStorage.setItem('user',JSON.stringify(nUser));
 					if(response.body.success === true){
 						swal({
