@@ -6,8 +6,6 @@
 
 				<input type="text" id="nombreInput" v-model="wizard.nombre">
 				<label for="nombreInput" class="active">Nombre</label>
-				<input type="text" id="usernameInput" v-model="wizard.username">
-				<label for="usernameInput" class="active">Username</label>
 				<input type="text" id="fechaInput" v-model="wizard.fecha">
 				<label for="fechaInput" class="active">Fecha de nacimiento</label>
 				<input type="text" id="ocupacionInput" v-model="wizard.ocupacion_previa">
@@ -17,7 +15,7 @@
 				<input type="text" id="creenciasInput" v-model="wizard.creencias">
 				<label for="creenciasInput" class="active">Creencias religiosas</label>
 				<br>
-				<button class="btn">Terminar</button>
+				<button class="btn" v-on:click="registrar">Terminar</button>
 			</div>
 		</div>
 	</div>
@@ -32,6 +30,20 @@
 				wizard: {
 
 				}
+			}
+		},
+		methods: {
+			registrar(){
+				this.wizard.username = JSON.parse(localStorage.getItem('user')).username;
+				this.wizard.amigos = [];
+				this.wizard.id_user= '';
+				this.$http.post(`${baseUrl.uri}/hechiceros/crear`,this.wizard).then((response)=>{
+					if(response.body.success){
+						swal('Creado!','','success');
+					}else{
+						swal('Error','','error');
+					}
+				});
 			}
 		}
 	}

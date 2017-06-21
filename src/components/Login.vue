@@ -2,7 +2,7 @@
 	<div id="loginRoot">
 		<div class="row" id="loginTitle">
 			<div class="col l12 m12 s12">
-				<p>Examen UX - Inti</p>
+				<p>Bienvenidos a Hogwarts</p>
 			</div>
 		</div>
 		<div class="row">
@@ -117,10 +117,10 @@
 				}
 			},
 			register(){
-				var nUser = this.user;
+				var nUser = this.registro;
 
 				this.$http.post(`${baseUrl.uri}/register`, nUser).then((response)=>{
-					nUser.scope = ['hechicero'];
+					
 					localStorage.setItem('user',JSON.stringify(nUser));
 					if(response.body.success === true){
 						swal({
@@ -184,6 +184,7 @@
 		margin: 10% auto;
 		border-radius: 5px;
 		padding-top: 10px;
+		animation: fadein 2s;
 	}
 	
 	.checkP{

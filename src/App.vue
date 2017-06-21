@@ -6,7 +6,7 @@
 				<aside id="sidebar">
 					<div class="linkContainer" >
 						<a>
-						<router-link to="/hechizos">
+						<router-link :to="'/hechizos?id='+$">
 							<p>Hechizos</p>
 						</router-link>
 						</a>
@@ -140,7 +140,7 @@
 		font-family: 'Roboto', sans-serif;
 	}
 	body{
-		
+		background-color: lightgrey;
 		background-image: url('./wood.jpg');
 		background-repeat: no-repeat;
 		background-size: cover;
